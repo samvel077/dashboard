@@ -1,0 +1,21 @@
+{
+	"singleQuote": true,
+	"tabWidth": 4,
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": [
+				"*.yaml",
+				"*.yml",
+				"yarn.lock",
+				"package.json",
+				"angular.json"
+			],
+			"options": {
+				"tabWidth": 2,
+				"useTabs": false,
+				"singleQuote": false
+			}
+		}
+	]
+}

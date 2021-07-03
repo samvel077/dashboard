@@ -1,0 +1,90 @@
+<div class="sl">
+	<div class="sl__header hidden-mobile">
+		<h1>Space list</h1>
+		<div
+			[routerLink]="'/re/property/' + propertyId + '/space/new'"
+			class="sl__add-space"
+		>
+			<h3>Add space</h3>
+			<span>+</span>
+		</div>
+	</div>
+
+	<div class="sl__header hidden-desktop">
+		<div class="header-title">
+			<h3>Space list</h3>
+			<p>Space list</p>
+		</div>
+		<div
+			[routerLink]="'/re/property/' + propertyId + '/space/new'"
+			class="sl__add-space item-list-header"
+		>
+			<h3>Add space</h3>
+			<span>+</span>
+		</div>
+	</div>
+
+	<div class="sl__content">
+		<div class="content-header item-list-header">
+			<div class="content-section-title">
+				<span class="title">Title</span>
+			</div>
+			<div class="content-section-status">
+				<span class="title">Status</span>
+			</div>
+			<div class="content-section-preview">
+				<span class="title"></span>
+			</div>
+			<div class="content-section-edit-delete">
+				<span class="title"></span>
+			</div>
+		</div>
+		<div class="content-inner">
+			<div class="space-item item-list" *ngFor="let space of spaces">
+				<div class="content-section-title">
+					<p>{{ space.title }}</p>
+				</div>
+				<div class="content-section-status">
+					<p>{{ space.status }}</p>
+				</div>
+				<div class="content-section-preview">
+					<button
+						[routerLink]="
+							'/re/property/' +
+							propertyId +
+							'/space/' +
+							space.id +
+							'/preview'
+						"
+						class="btn btn-light-blue"
+					>
+						Preview
+					</button>
+				</div>
+
+				<div class="content-section-edit-delete">
+					<div
+						[routerLink]="
+							'/re/property/' + propertyId + '/space/' + space.id
+						"
+						class="section-edit btn-circle"
+					>
+						<fa-icon
+							class="icon"
+							[icon]="iconServ.faPencil"
+						></fa-icon>
+					</div>
+					<div
+						class="section-delete btn-circle"
+						(click)="deleteSpace(space.id)"
+					>
+						<fa-icon
+							class="icon"
+							[icon]="iconServ.faTrashAlt"
+						></fa-icon>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

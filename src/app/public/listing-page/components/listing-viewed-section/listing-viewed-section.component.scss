@@ -1,0 +1,137 @@
+@import "~src/style/vars";
+@import "../../lisitng.scss";
+
+.listing {
+	width: 100%;
+
+	&__viewed-conteiner {
+		border-top: 5px solid #ebeff2;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+
+	&__viewed-header {
+		display: flex;
+		align-items: center;
+		h2 {
+			margin-bottom: 23px;
+		}
+	}
+
+	&__viewed-wrapper {
+		width: 100%;
+		display: grid;
+		height: auto;
+		transition: 0.3s;
+		transition: .1s linear;  
+    	grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+		gap: 20px;
+		place-items: center;
+
+		&.hidden {
+			overflow: hidden;
+			height: 260px;
+			transition: 0.3s;
+			transition: max-height 1s; 
+		}
+
+		.viewed-item {
+			height: 250px;
+			width: 170px;
+			border-bottom: 3px solid $coloPrimaryViolet;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+		}
+
+		.image-section {
+			position: relative;
+
+			img {
+				height: 150px;
+				width: 100%;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+			}
+
+			.item-of {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				width: 50px;
+				height: 20px;
+				border-radius: 200px;
+				background-color: $colorPrimaryLightBlue;
+				opacity: 0.8;
+				
+				span {
+					color: $colorAccentWhite;
+					font-size: 8px;
+				}
+			}
+
+			.favorite-icon {
+				position: absolute;
+				color: $colorPrimaryBlue;
+				font-size: 20px;
+				top: 5px;
+				right: 10px;
+				opacity: 0.6;
+			}
+			
+		}
+
+		.info-section {
+			display: flex;
+			flex-direction: column;
+
+			sup {
+				font-size: 8px;
+			}
+
+			.sub-title {
+				margin-bottom: 0;
+			}
+			
+			.address {
+				font-size: 12px;
+				color: $coloPrimaryViolet;
+				margin: 8px 0 0 0;
+				line-height: 1.2;
+			}
+
+			.rating-section {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.view-reating {
+				display: flex;
+				align-items: center;
+
+				label {
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+
+	&__show-more {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		margin-top: 10px;
+
+		p {
+			color: $colorPrimaryBlue;
+			font-size: 14px;
+			font-weight: 400;
+			margin: 0;
+			font-family: Montserrat;
+			cursor: pointer;
+		}
+	}
+}

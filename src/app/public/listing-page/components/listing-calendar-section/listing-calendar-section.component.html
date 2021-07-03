@@ -1,0 +1,61 @@
+<div class="listing listing-row">
+   <div class="listing__calendar-conteiner">
+      <div class="listing__calendar">
+         <div class="listing__calendar-header">
+            <div class="listing__calendar-title">
+               <h2 class="title">Calendar and prices</h2>
+            </div>
+         </div>
+         <div class="calendar-items">
+            <div class="calendar-section">
+               <div class="calendar-content">
+                  <div class="calendar-inner">
+                     <ngx-daterangepicker-material ngxDaterangepickerMd [locale]="local" startKey="start" endKey="end"
+                        [(ngModel)]="selected" [isInvalidDate]="isInvalidDate" name="daterange" [autoApply]="true"
+                        [minDate]="minDate" [maxDate]="maxDate" (choosedDate)="choosedDate($event)">
+                     </ngx-daterangepicker-material>
+                  </div>
+                  <div class="calendar-colors">
+                     <div class="today">
+                        <span>Today</span>
+                     </div>
+                     <div class="occupied">
+                        <span>Occupied</span>
+                     </div>
+                     <div class="selected">
+                        <span>Selected</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="calendar-item">
+               <div class="image-section">
+                  <img src="assets/images/Rectangle 5128.png" />
+               </div>
+               <div class="info-section">
+                  <div class="info-section-1">
+                     <h3 class="title">Meeting room. 10 m<sup>2</sup></h3>
+                     <p class="address">Amsterdam, Noord-Holland, Netherlands</p>
+                     <div class="rating-section">
+                        <p class="pay-day">$ 24/DAY</p>
+                        <div class="calendar-reating">
+                           <label>5.0</label>
+                           <app-listing-rating [singleRatingWithBigSize]="100"></app-listing-rating>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="info-section-2">
+                     <p class="text">Duration: <span>26</span></p>
+                     <p class="text">Total: <span>4 564</span></p>
+
+                     <button class="btn hidden-mobile">sent request</button>
+                  </div>
+               </div>
+            </div>
+            <div class="btn-section hidden-desktop">
+               <button class="btn">sent request</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

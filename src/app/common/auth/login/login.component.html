@@ -1,0 +1,80 @@
+<app-auth-header
+	label="Don't have an account yet?"
+	buttonLabel="sign up"
+	link="/signup"
+></app-auth-header>
+<section class="container">
+	<div class="flex-row equals collapse-md align-stretch">
+		<div class="hero-col">
+			<img
+				class="show-lte-md"
+				src="/assets/images/auth-screen-back.png"
+			/>
+			<img
+				class="hide-lte-md"
+				src="/assets/images/auth-screen-back-large.png"
+			/>
+		</div>
+		<div class="form-col">
+			<form [formGroup]="formLogin" (ngSubmit)="login()">
+				<div class="form-section">
+					<div class="form-group">
+						<label>Email<span>*</span></label>
+						<input
+							formControlName="email"
+							type="email"
+							class="form-control"
+						/>
+						<div
+							*ngIf="submitted && f.email.errors"
+							class="error-form"
+						>
+							<div *ngIf="f.email.errors?.required">
+								Email is required
+							</div>
+							<div *ngIf="f.email.errors?.email">
+								Email must be a valid email address
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Password<span>*</span></label>
+						<input
+							formControlName="password"
+							type="password"
+							class="form-control"
+						/>
+						<div
+							*ngIf="submitted && f.password.errors"
+							class="error-form"
+						>
+							<div *ngIf="f.password.errors?.required">
+								Password is required
+							</div>
+						</div>
+					</div>
+					<div class="form-group mb-0">
+						<button type="submit" class="btn outline icon-left">
+							<fa-icon
+								[icon]="faUser"
+								[fixedWidth]="true"
+							></fa-icon
+							>Sign In
+						</button>
+					</div>
+					<div class="forgot-link">
+						<a>Forgot Password?</a>
+					</div>
+				</div>
+				<div class="hide-gt-md form-auth-section">
+					<div class="forgot-link">
+						<a>Don’t have an account</a>
+					</div>
+					<a class="btn btn-border btn-signin">
+						<fa-icon [icon]="faKey"></fa-icon>sign In
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>

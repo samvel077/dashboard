@@ -1,0 +1,149 @@
+@import "~src/style/vars";
+@import "../../lisitng.scss";
+
+.listing {
+   width: 100%;
+
+   h2 {
+      margin-bottom: 25px;
+   }
+
+   &__owner-conteiner {
+      border-top: 5px solid #ebeff2;
+      padding-top: 30px;
+      padding-bottom: 30px;
+   }
+
+   &__owner {
+      &-elements {
+         display: flex;
+      }
+
+      &-element-image {
+         height: 200px;
+
+         img {
+            border-radius: 50%;
+            height: inherit;
+            object-fit: cover;
+         }
+      }
+
+      &-deskription {
+         margin-left: 30px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+
+         h1 {
+            font-size: 24px;
+            line-height: 29px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            color: $colorPrimaryDarkBlue;
+         }
+
+         .email {
+            margin-top: 2px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 22px;
+            color: $coloPrimaryViolet;
+         }
+
+         .other-owners {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 22px;
+            color: $colorPrimaryLightBlue;
+            text-decoration: underline;
+         }
+      }
+
+      &-chat {
+         .chat-icon {
+            display: inline-block;
+         }
+
+         .btn-circle {
+            width: 39px;
+            height: 39px;
+
+            fa-icon {
+               font-size: 20px;
+            }
+         }
+
+         span {
+            margin-left: 15px;
+            font-size: 18px;
+            line-height: 22px;
+            color: $coloPrimaryViolet;
+         }
+      }
+   }
+}
+
+@media (max-width: $largeMobile) {
+   .listing {
+      &__owner {
+         &-elements {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+         }
+
+         &-element-image {
+            display: flex;
+            justify-content: center;
+            height: 160px;
+
+            img {
+               border-radius: 50%;
+               height: inherit;
+               object-fit: cover;
+            }
+         }
+
+         &-deskription {
+            align-items: center;
+            margin-left: 0px;
+
+            h1 {
+               font-size: 29px;
+               line-height: 29px;
+               margin-top: 10px;
+            }
+            .email {
+               margin-bottom: 25px;
+               font-size: 14px;
+               line-height: 17px;
+               margin-top: 5px;
+            }
+
+            .other-owners {
+               margin-bottom: 15px;
+               font-size: 14px;
+               line-height: 17px;
+            }
+         }
+
+         &-chat {
+            .btn-circle {
+               width: 31px;
+               height: 31px;
+
+               fa-icon {
+                  font-size: 17px;
+               }
+            }
+
+            span {
+               margin-left: 12px;
+               font-size: 14px;
+               line-height: 17px;
+            }
+         }
+      }
+   }
+}

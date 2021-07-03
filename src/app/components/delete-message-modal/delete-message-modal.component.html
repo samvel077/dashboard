@@ -1,0 +1,19 @@
+<div class="modal">
+	<div class="modal__header">
+		<div class="close-modal" (click)="onClose()">
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="modal__title">
+		<h2>{{ data.title }}</h2>
+	</div>
+	<div class="modal__message">
+		<textarea placeholder="Message" [(ngModel)]="data.message"></textarea>
+	</div>
+	<div class="modal__button-group">
+		<button class="btn btn-light-blue" (click)="reject()">
+			{{ data.button }}
+		</button>
+	</div>
+</div>

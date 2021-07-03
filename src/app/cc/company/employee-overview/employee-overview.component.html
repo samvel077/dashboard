@@ -1,0 +1,254 @@
+<div [class.backdrop]="isSecontBackdrop" *ngIf="isSecontBackdrop">
+	<h1>Thanks!</h1>
+	<h1>Your request has been sent</h1>
+	<div class="back">
+		<fa-icon [icon]="iconServ.faChevronLeft" class="icon-chervon"></fa-icon>
+		<span (click)="isSecontBackdrop = false">Back to Members</span>
+	</div>
+</div>
+
+<div class="team">
+	<div class="employe-section hidden-desktop">
+		<h3>Employee</h3>
+		<p>Uses objects</p>
+	</div>
+	<div class="team__header">
+		<h1 class="team__header-title hidden-mobile">Team</h1>
+		<div class="team__header-options">
+			<div class="team__sort-by">
+				<span>Sort by:</span>
+				<mat-form-field appearance="fill">
+					<mat-select
+						[(ngModel)]="selectedDate"
+						disableOptionCentering
+					>
+						<mat-option
+							*ngFor="let sort of slectDate"
+							[value]="sort.value"
+						>
+							{{ sort.viewValue }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="team__invate" (click)="openInvite()">
+				<h3>Invite new</h3>
+				<span>+</span>
+			</div>
+		</div>
+	</div>
+	<div class="team__section">
+		<div class="team__wrapper">
+			<div class="team__checkbox-section label-checkbox">
+				<input type="checkbox" id="checkbox__0" />
+				<label for="checkbox__0"></label>
+			</div>
+			<div class="team__name-section">
+				<h3 class="sub-title hidden-mobile">Name</h3>
+				<h3 class="sub-title hidden-desktop">Subject</h3>
+			</div>
+			<div class="team__request-section hidden-mobile">
+				<span class="sub-title">Request</span>
+				<mat-form-field appearance="fill">
+					<mat-select
+						[(ngModel)]="requestOption"
+						disableOptionCentering
+					>
+						<mat-option
+							*ngFor="let sort of request"
+							[value]="sort.value"
+						>
+							{{ sort.viewValue }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="team__deals-section hidden-mobile">
+				<span class="sub-title">Deals:</span>
+				<mat-form-field appearance="fill">
+					<mat-select
+						[(ngModel)]="completedOption"
+						disableOptionCentering
+					>
+						<mat-option
+							*ngFor="let sort of completed"
+							[value]="sort.value"
+						>
+							{{ sort.viewValue }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="team__earnings-section hidden-mobile">
+				<span class="sub-title">Total Earnings</span>
+			</div>
+			<div class="team__activity-section">
+				<span class="sub-title hidden-mobile">Recent activity</span>
+				<span class="sub-title hidden-desktop">Date</span>
+			</div>
+		</div>
+
+		<div class="team__content-list hidden-mobile">
+			<div
+				class="team__item"
+				*ngFor="let item of employess; let i = index"
+			>
+				<div class="team__checkbox-section label-checkbox">
+					<input type="checkbox" id="checkbox_{{ i }}" />
+					<label for="checkbox_{{ i }}"></label>
+				</div>
+				<div class="team__name-section">
+					<div class="name">
+						<img [src]="item.img" />
+						<h3 class="name-title">{{ item.fullName }}</h3>
+					</div>
+					<div class="contact">
+						<div class="btn-circle">
+							<fa-icon
+								[icon]="iconServ.faCommentAlt"
+								class="icon"
+							></fa-icon>
+						</div>
+						<div class="btn-circle">
+							<fa-icon
+								[icon]="iconServ.faTrashAlt"
+								class="icon"
+							></fa-icon>
+						</div>
+					</div>
+				</div>
+				<div class="team__request-section hidden-mobile">
+					<span class="other-title">{{ item.requests }}</span>
+				</div>
+				<div class="team__deals-section hidden-mobile">
+					<span class="other-title">{{ item.deals }}</span>
+				</div>
+				<div class="team__earnings-section hidden-mobile">
+					<span class="other-title">{{ item.earnings }}</span>
+				</div>
+				<div class="team__activity-section">
+					<span
+						class="other-title"
+						[ngClass]="{ online: item.activity === 'online' }"
+						>{{ item.activity }}</span
+					>
+				</div>
+			</div>
+		</div>
+
+		<div class="team__content-list hidden-desktop">
+			<div
+				class="team__item"
+				*ngFor="let item of employess; let i = index"
+			>
+				<mat-accordion>
+					<mat-expansion-panel hideToggle>
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								<div class="collaps-section">
+									<div
+										class="team__checkbox-section label-checkbox"
+									>
+										<input
+											type="checkbox"
+											id="checkbox-mobile_{{ i }}"
+										/>
+										<label
+											for="checkbox-mobile_{{ i }}"
+										></label>
+									</div>
+									<div class="team__name-section">
+										<div class="name">
+											<img [src]="item.img" />
+											<h3 class="name-title">
+												{{ item.fullName }}
+											</h3>
+										</div>
+										<div class="contact">
+											<div class="btn-circle">
+												<fa-icon
+													[icon]="
+														iconServ.faCommentAlt
+													"
+													class="icon"
+												></fa-icon>
+											</div>
+											<div class="btn-circle">
+												<fa-icon
+													[icon]="iconServ.faTrashAlt"
+													class="icon"
+												></fa-icon>
+											</div>
+										</div>
+									</div>
+									<div class="team__activity-section">
+										<span
+											class="other-title"
+											[ngClass]="{
+												online:
+													item.activity === 'online'
+											}"
+											>{{ item.activity }}</span
+										>
+									</div>
+								</div>
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<div class="collaps-section-bottom">
+							<div class="team__request-section">
+								<div class="inner-collaps">
+									<span class="sub-title">Request</span>
+									<mat-form-field appearance="fill">
+										<mat-select
+											[(ngModel)]="requestOption"
+											disableOptionCentering
+										>
+											<mat-option
+												*ngFor="let sort of request"
+												[value]="sort.value"
+											>
+												{{ sort.viewValue }}
+											</mat-option>
+										</mat-select>
+									</mat-form-field>
+								</div>
+								<span class="other-title">{{
+									item.requests
+								}}</span>
+							</div>
+							<div class="team__deals-section">
+								<div class="inner-collaps">
+									<span class="sub-title">Deals:</span>
+									<mat-form-field appearance="fill">
+										<mat-select
+											[(ngModel)]="completedOption"
+											disableOptionCentering
+										>
+											<mat-option
+												*ngFor="let sort of completed"
+												[value]="sort.value"
+											>
+												{{ sort.viewValue }}
+											</mat-option>
+										</mat-select>
+									</mat-form-field>
+								</div>
+								<span class="other-title">{{
+									item.deals
+								}}</span>
+							</div>
+							<div class="team__earnings-section">
+								<div class="inner-collaps">
+									<span class="sub-title">Total Earing</span>
+								</div>
+								<span class="other-title">{{
+									item.earnings
+								}}</span>
+							</div>
+						</div>
+					</mat-expansion-panel>
+				</mat-accordion>
+			</div>
+		</div>
+	</div>
+</div>

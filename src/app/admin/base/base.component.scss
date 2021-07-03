@@ -1,0 +1,21 @@
+@import '~src/style/vars';
+
+// :host {
+// 	display: flex;
+// 	height: 100%;
+// 	align-items: stretch;
+// }
+
+.main {
+	display: flex;
+}
+
+.dashboard-section {
+	width: 100%;
+}
+
+@media screen and (max-width: $largeMobile) {
+	.main {
+		flex-direction: column;
+	}
+}

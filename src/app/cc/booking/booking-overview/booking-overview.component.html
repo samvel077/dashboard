@@ -1,0 +1,63 @@
+<div class="bo">
+	<div class="bo__header hidden-mobile">
+		<h1>Booking list</h1>
+	</div>
+
+	<div class="bo__header hidden-desktop">
+		<div class="header-title">
+			<h3>Booking list</h3>
+			<p>Booking list</p>
+		</div>
+	</div>
+
+	<div class="bo__content">
+		<div class="content-header item-list-header">
+			<div class="content-section-title">
+				<span class="title">Title</span>
+			</div>
+			<div class="content-section-status">
+				<span class="title">Status</span>
+			</div>
+			<div class="content-section-preview">
+				<span class="title"></span>
+			</div>
+			<div class="content-section-edit-delete">
+				<span class="title"></span>
+			</div>
+		</div>
+		<div class="content-inner">
+			<div
+				class="booking-item item-list"
+				*ngFor="let booking of bookings; let idx = index"
+			>
+				<div class="content-section-title">
+					<p>{{ booking.title }}</p>
+				</div>
+				<div class="content-section-status">
+					<p>{{ booking.status }}</p>
+				</div>
+				<div class="content-section-preview">
+					<input type="checkbox" id="checkbox__{{ idx }}" />
+					<label for="checkbox__{{ idx }}"></label>
+				</div>
+				<div class="content-section-edit-delete">
+					<div class="section-edit btn-circle">
+						<fa-icon
+							class="icon"
+							[icon]="iconServ.faPencil"
+						></fa-icon>
+					</div>
+					<div
+						class="section-delete btn-circle"
+						(click)="rejectBooking(booking.id)"
+					>
+						<fa-icon
+							class="icon"
+							[icon]="iconServ.faTrashAlt"
+						></fa-icon>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

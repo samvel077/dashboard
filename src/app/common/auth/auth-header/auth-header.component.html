@@ -1,0 +1,17 @@
+<header class="container">
+	<div class="flex-row justify-space-between">
+		<div>
+			<img class="hide-lte-md" src="/assets/images/logo-large.png" />
+		</div>
+		<div class="flex-row align-center">
+			<span class="no-acc">{{ label }}</span>
+			<div class="btn outline icon-left" [routerLink]="link">
+				<fa-icon [icon]="faKey"></fa-icon>
+				{{ buttonLabel }}
+			</div>
+			<a class="btn-close">
+				<fa-icon [icon]="faTimes"></fa-icon>
+			</a>
+		</div>
+	</div>
+</header>

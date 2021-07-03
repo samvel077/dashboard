@@ -1,0 +1,157 @@
+@import '~src/style/vars';
+
+:host {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	section {
+		flex: 1 0 auto;
+		overflow: visible;
+		display: flex;
+		align-items: stretch;
+	}
+}
+
+.hero-col {
+	display: flex;
+	align-items: center;
+	img {
+		display: block;
+		max-width: 100%;
+	}
+}
+
+.form-col {
+	display: flex;
+	align-items: center;
+
+	form {
+		width: 100%;
+		padding: 0 3rem;
+	}
+}
+
+/*Form Styles*/
+form {
+	.form-group {
+		&:not(:last-child) {
+			margin-bottom: 20px;
+		}
+
+		label {
+			font-size: 12px;
+			color: $colorViolet;
+			position: relative;
+			padding-right: 7px;
+			display: inline-block;
+			font-weight: normal;
+
+			> span {
+				position: absolute;
+				top: 0;
+				right: 0;
+				font-size: 8px;
+				color: $colorBlue;
+			}
+		}
+
+		.form-control {
+			width: 100%;
+			border: none;
+			border-bottom: 1px solid $colorViolet;
+			padding-top: 6px;
+			padding-bottom: 9px;
+			box-sizing: border-box;
+			color: $colorDark;
+			background-color: transparent;
+			&.ng-invalid:not(.ng-untouched) {
+				border-color: $colorRed;
+			}
+		}
+
+		.form-checkbox {
+			cursor: pointer;
+			position: relative;
+
+			label {
+				width: 100%;
+				display: flex;
+
+				> span {
+					position: relative;
+					font-size: 12px;
+					padding-left: 13px;
+					color: $colorSecondary;
+				}
+			}
+
+			input {
+				position: absolute;
+				cursor: pointer;
+				opacity: 0;
+				width: 0;
+				height: 0;
+
+				& + span {
+					position: relative;
+					cursor: pointer;
+					width: 16px;
+					height: 16px;
+					display: block;
+					border: 2px solid $colorLight;
+					border-radius: 4px;
+				}
+
+				&:checked {
+					& + span {
+						background-image: url('/assets/images/icons/ico-checked.png');
+						background-repeat: no-repeat;
+						background-size: 100%;
+						border: none;
+						width: 20px;
+						height: 20px;
+						// @media #{$large-desktop}{
+						// 	background-image: url("/assets/images/icons/ico-checked-large.png");
+						// }
+					}
+				}
+			}
+		}
+	}
+}
+
+// .section-user-auth {
+// 	.form-section {
+// 		.form-group {
+// 			button {
+// 				&:before {
+// 				background-image: url("/assets/images/icons/ico-user.png");
+// 				}
+// 			}
+// 		}
+// 	}
+// 	.forgot-link {
+// 		margin-top: 9px;
+// 		> a {
+// 		color: $light-grey-purple;
+// 		font-size: 12px;
+// 		text-decoration: underline;
+// 		}
+// 	}
+// 	.form-auth-section {
+// 		margin-top: 145px;
+// 		max-width: 369px;
+// 		@media #{$mobile-view} {
+// 			margin-left: auto;
+// 			margin-right: auto;
+// 		}
+// 		a {
+// 			display: block;
+// 			text-align: center;
+// 		}
+// 		.forgot-link {
+// 			margin-bottom: 9px;
+// 		}
+// 	}
+// }

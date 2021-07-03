@@ -1,0 +1,130 @@
+$ratingSize: 100px;
+$singleRatingSizeMidSize: 25px;
+$singleRatingSizeBigSize: 28px;
+$singleRatingSize: 20px;
+
+
+.stars {
+	height: ($ratingSize/5);
+	position: relative;
+	width: $ratingSize;
+   &.review-rating {
+	  &:before {
+		background-image: url('../../../assets/star-icons/star-empty.svg');
+	  }
+  
+	  .rating-size {
+		&:before {
+		  background-image: url('../../../assets/star-icons/star-full.svg');
+		}
+	  }
+	}
+
+	&:before {
+		// inactive
+		content: "";
+		background-repeat: repeat-x;
+		background-size: ($ratingSize/5);
+		bottom: 0;
+		display: block;
+		height: ($ratingSize/5);
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: $ratingSize;
+	  }
+	
+	  .rating-size {
+		display: block;
+		text-indent: -10000px;
+		width: $ratingSize;
+		height: ($ratingSize/5);
+		position: absolute;
+		overflow: hidden;
+	
+		&:before {
+		  // active
+		  content: "";
+		  background-repeat: repeat-x;
+		  background-size: ($ratingSize/5);
+		  bottom: 0;
+		  display: block;
+		  height: ($ratingSize/5);
+		  left: 0;
+		  position: absolute;
+		  right: 0;
+		  text-indent: 10000px;
+		  top: 0;
+		}
+	  }
+
+	  &.single-star-rewiew {
+		width: $singleRatingSize;
+		height: $singleRatingSize;
+
+		&:before {
+			// inactive
+			background-size: $singleRatingSize;
+			height: $singleRatingSize;
+			width: $singleRatingSize;
+		  }
+
+		  .rating-size {
+			width: $singleRatingSize;
+			height: $singleRatingSize;
+
+			&:before {
+				// active
+				background-size: $singleRatingSize;
+				height: $singleRatingSize;
+			  }
+		  }
+	  }
+
+	  &.single-star-rewiew-mid {
+		width: $singleRatingSizeMidSize;
+		height: $singleRatingSizeMidSize;
+
+		&:before {
+			// inactive
+			background-size: $singleRatingSizeMidSize;
+			height: $singleRatingSizeMidSize;
+			width: $singleRatingSizeMidSize;
+		  }
+
+		  .rating-size {
+			width: $singleRatingSizeMidSize;
+			height: $singleRatingSizeMidSize;
+
+			&:before {
+				// active
+				background-size: $singleRatingSizeMidSize;
+				height: $singleRatingSizeMidSize;
+			  }
+		  }
+	  }
+
+	  &.single-star-rewiew-big {
+		width: $singleRatingSizeBigSize;
+		height: $singleRatingSizeBigSize;
+
+		&:before {
+			// inactive
+			background-size: $singleRatingSizeBigSize;
+			height: $singleRatingSizeBigSize;
+			width: $singleRatingSizeBigSize;
+		  }
+
+		  .rating-size {
+			width: $singleRatingSizeBigSize;
+			height: $singleRatingSizeBigSize;
+
+			&:before {
+				// active
+				background-size: $singleRatingSizeBigSize;
+				height: $singleRatingSizeBigSize;
+			  }
+		  }
+	  }
+}

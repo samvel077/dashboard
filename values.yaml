@@ -1,0 +1,8 @@
+replicaCount: 2
+
+imagePullSecrets:
+  - name: roodit-registry-config
+
+ingress:
+  enabled: true
+  tls: true

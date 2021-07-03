@@ -1,0 +1,31 @@
+<div class="search-navbar__menu search-navbar">
+	<ul class="search-navbar__wrapper">
+		<li class="search-navbar__item">
+			<fa-icon
+				[icon]="iconServ.faSearch"
+				class="search-navbar__icon search"
+			></fa-icon>
+			<input
+				class="search-navbar__text hidden-mobile"
+				placeholder="Global search"
+			/>
+			<input
+				class="search-navbar__text hidden-desktop"
+				placeholder="Search Members"
+			/>
+		</li>
+		<li>
+			<button class="btn btn-light-blue hidden-desktop">
+				<fa-icon
+					class="search-navbar__icon home"
+					[icon]="iconServ.faHome"
+				></fa-icon>
+				list of objects
+			</button>
+			<fa-icon
+				class="search-navbar__icon note"
+				[icon]="iconServ.faBell"
+			></fa-icon>
+		</li>
+	</ul>
+</div>

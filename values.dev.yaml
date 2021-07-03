@@ -1,0 +1,40 @@
+deploymentEnvironment: local
+replicaCount: 1
+
+image:
+  pullPolicy: IfNotPresent
+  tag: dev
+
+volumeMounts:
+  - mountPath: /home/node/.config/yarn/link
+    name: linked-modules
+  - mountPath: /home/node/app/src
+    name: src
+  - mountPath: /home/node/projects
+    name: projects
+
+volumes:
+  - name: linked-modules
+    hostPath:
+      path: /Users/ties/.config/yarn/link
+      type: Directory
+  - name: src
+    hostPath:
+      path: /Users/ties/projects/clients/roodit/dashboard/src
+      type: Directory
+  - name: projects
+    hostPath:
+      path: /Users/ties/projects
+      type: Directory
+
+ingress:
+  enabled: true
+  tls: false
+
+resources:
+  limits:
+    memory: 4Gi
+    cpu: 4
+  requests:
+    memory: 256Mi
+    cpu: 200m

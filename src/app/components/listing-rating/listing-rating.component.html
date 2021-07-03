@@ -1,0 +1,23 @@
+<div *ngIf="ratingWidth">
+	<div class="stars review-rating stars-rewiew">
+		<span class="rating-size" [ngStyle]="{'width': ratingWidth + '%'}"></span>
+	</div>
+</div>
+
+<div *ngIf="singleRatingWith">
+	<div class="stars review-rating single-star-rewiew">
+		<span class="rating-size" [ngStyle]="{'width': singleRatingWith + '%'}"></span>
+	</div>
+</div>
+
+<div *ngIf="singleRatingWithMidSize">
+	<div class="stars review-rating single-star-rewiew-mid">
+		<span class="rating-size" [ngStyle]="{'width': singleRatingWithMidSize + '%'}"></span>
+	</div>
+</div>
+
+<div *ngIf="singleRatingWithBigSize">
+	<div class="stars review-rating single-star-rewiew-big">
+		<span class="rating-size" [ngStyle]="{'width': singleRatingWithBigSize + '%'}"></span>
+	</div>
+</div>

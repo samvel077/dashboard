@@ -1,0 +1,133 @@
+@import "~src/style/vars";
+@import "../../lisitng.scss";
+
+.listing {
+	width: 100%;
+
+	&__gallery-conteiner {
+		display: flex;
+		flex-direction: column;
+		padding-top: 30px;
+		position: relative;
+	}
+
+	&__gallery-header {
+		display: flex;
+		flex-direction: column;
+
+	sup {
+		position: absolute;
+		font-size: 15px;
+		font-weight: bold;
+		font-family: Lato;
+		color: #445175;
+		top: -8px;
+	}
+
+	.title {
+		position: relative;
+		font-size: 33px;
+		font-weight: 400;
+		font-family: Lato;
+		color: $colorPrimaryDarkBlue;
+	}
+	
+	.address {
+		font-size: 24px;
+		color: $coloPrimaryViolet;
+		margin: 0;
+	}
+
+	.rating-section {
+		display: flex;
+	}
+
+	.pay-day {
+		font-size: 24px;
+		margin-right: 65px;
+	}
+
+	.view-reating {
+		display: flex;
+		align-items: center;
+
+		label {
+			font-size: 24px;
+			margin-right: 5px;
+		}
+	}
+	}
+
+	&__gallery-calendar {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		width: 42%;
+		bottom: 15px;
+		right: 0;
+
+		.btn {
+			width: 100%;
+			margin-bottom: 5px;
+		}
+	}
+
+}
+
+@media (max-width: $smallDevice) {
+	.listing {
+		&__gallery-calendar {
+			width: 35%;
+		}
+	}
+}
+
+@media (max-width: $largeMobile) {
+	.listing {
+
+		&__gallery-header {
+		.title {
+			font-size: 28px;
+			margin: 0 0 8px 0;
+		}
+		
+		.address {
+			font-size: 18px;
+			line-height: normal;
+			margin-bottom: 10px;
+		}
+	
+		.rating-section {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 3px;
+		}
+	
+		.pay-day {
+			font-size: 18px;
+			margin-right: 0;
+		}
+	
+		.view-reating {
+			label {
+				font-size: 18px;
+				margin-right: 5px;
+			}
+		}
+	}
+
+	&__gallery-carousel {
+		&.listing-row {
+			padding-right: 0;
+			padding-left: 0;
+		}
+	}
+
+		&__gallery-calendar {
+			position: static;
+			margin-top: 15px;
+			width: 100%;
+		}
+	}
+}

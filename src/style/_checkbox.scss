@@ -1,0 +1,96 @@
+/********** Checkbox **********/
+
+[type='checkbox'] {
+	position: absolute;
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	padding: 0;
+	width: 1px;
+	white-space: nowrap;
+}
+
+[type='checkbox'] + label {
+	position: relative;
+	padding: 0px;
+	display: flex;
+	align-items: center;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: $colorPrimaryDarkBlue;
+	cursor: pointer;
+}
+
+[type='checkbox'] + label::before {
+	border: 2px solid $colorPrimaryDarkGray;
+	border-radius: 5px;
+	background: #fff;
+	box-sizing: content-box;
+	content: '';
+	color: $colorPrimaryDarkGray;
+	margin-right: 10px;
+	top: 50%;
+	left: 0;
+	width: 13px;
+	height: 13px;
+	display: inline-block;
+	vertical-align: top;
+	-webkit-transition: background-color 300ms linear;
+	-ms-transition: background-color 300ms linear;
+	transition: background-color 300ms linear;
+}
+
+.label-checkbox > label:hover:before {
+	border-color: $colorPrimaryDarkBlue;
+}
+
+[type='checkbox']:checked + label::before {
+	border-color: $colorPrimaryLightBlue;
+	background-color: $colorPrimaryLightBlue;
+	border-radius: 5px;
+	width: 13px;
+	height: 13px;
+}
+
+[type='checkbox'] + label::after {
+	content: '\f00c';
+	font-family: 'Font Awesome 5 Free';
+	display: inline-block;
+	font-feature-settings: normal;
+	font-kerning: auto;
+	font-language-override: normal;
+	font-size: inherit;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-style: normal;
+	font-synthesis: weight style;
+	font-variant: normal;
+	line-height: 1;
+	text-rendering: auto;
+	font-size: 13px;
+	color: #001934;
+	text-align: center;
+	line-height: 15px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 2px;
+	font-weight: 600;
+	opacity: 0;
+	transform: scale(0.1);
+	transition: all 300ms;
+	-webkit-transition: all 300ms;
+}
+
+[type='checkbox']:checked + label::after {
+	color: #fff;
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	background: transparent;
+}

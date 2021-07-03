@@ -1,0 +1,44 @@
+<div class="sidebar-section">
+	<div class="sidebar-section__menu">
+		<ul class="sidebar-section__menu-wrapper">
+			<li class="sidebar-section__menu-item">
+				<fa-icon
+					[icon]="iconServ.faUserAlt"
+					class="sidebar-section__menu-icon"
+				></fa-icon>
+				<div class="sidebar-section__menu-right hidden-mobile">
+					<p class="title">Account</p>
+					<p class="text">Your account preferences</p>
+				</div>
+			</li>
+			<li class="sidebar-section__menu-item">
+				<fa-icon
+					[icon]="iconServ.faBell"
+					class="sidebar-section__menu-icon"
+				></fa-icon>
+				<div class="sidebar-section__menu-right hidden-mobile">
+					<p class="title">Notifications</p>
+					<p class="text">Your notifications preferences</p>
+				</div>
+			</li>
+			<li
+				[routerLink]="['/company/employee']"
+				routerLinkActive="active"
+				[routerLinkActiveOptions]="{ exact: true }"
+				class="sidebar-section__menu-item"
+			>
+				<fa-icon
+					[icon]="iconServ.faUserFriends"
+					class="sidebar-section__menu-icon"
+				></fa-icon>
+				<div class="sidebar-section__menu-right hidden-mobile">
+					<p class="title">Team</p>
+					<p class="text">Your account preferences</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="dashboard-section">
+		<router-outlet></router-outlet>
+	</div>
+</div>

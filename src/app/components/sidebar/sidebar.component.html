@@ -1,0 +1,73 @@
+<aside class="left-sidebar">
+	<div id="logo">
+		<img src="assets/logo.png" />
+	</div>
+	<div id="account">
+		<div class="avatar">
+			<img src="assets/placeholder.png" />
+		</div>
+		<div class="data">
+			<h3>{{ user?.firstName }} {{ user?.lastName }}</h3>
+			<span>{{ user?.email }}</span>
+		</div>
+	</div>
+	<div id="nav">
+		<div class="item" *ngFor="let item of items">
+			<div
+				class="data"
+				[routerLink]="item.url"
+				routerLinkActive="active"
+				[routerLinkActiveOptions]="{ exact: item.url === '.' }"
+			>
+				<div class="icon">
+					<fa-icon [icon]="item.icon" [fixedWidth]="true"></fa-icon>
+				</div>
+				<h3 class="label">{{ item.label }}</h3>
+			</div>
+			<div class="sub-list" *ngIf="item.children">
+				<div
+					class="sib-item"
+					*ngFor="let subItem of item.children"
+				></div>
+			</div>
+		</div>
+	</div>
+	<div id="logout">
+		<div class="item">
+			<div class="data" (click)="logout()">
+				<div class="icon">
+					<fa-icon [icon]="iconLogout" [fixedWidth]="true"></fa-icon>
+				</div>
+				<h3 class="label">Logout</h3>
+			</div>
+		</div>
+	</div>
+</aside>
+<div class="header-mobile">
+	<div class="img">
+		<img
+			src="https://media.istockphoto.com/photos/portrait-of-handsome-latino-african-man-picture-id1007763808?s=612x612"
+		/>
+	</div>
+	<h1 class="title">Members</h1>
+	<div class="header-icons">
+		<fa-icon class="icon-note" [icon]="iconServ.faBell"></fa-icon>
+		<fa-icon class="icon-elipsis" [icon]="iconServ.faEllipsisH"></fa-icon>
+	</div>
+</div>
+<div class="footer-mobile hidden-desktop">
+	<div id="nav">
+		<div class="item" *ngFor="let item of items">
+			<div
+				class="data"
+				[routerLink]="item.url"
+				routerLinkActive="active"
+				[routerLinkActiveOptions]="{ exact: item.url === '.' }"
+			>
+				<div class="icon">
+					<fa-icon [icon]="item.icon" [fixedWidth]="true"></fa-icon>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

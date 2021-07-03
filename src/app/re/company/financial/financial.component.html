@@ -1,0 +1,101 @@
+<div class="ph">
+	<div class="ph__header hidden-mobile">
+		<h1>Payment history</h1>
+		<div class="ph__add-money">
+			<h3>Add money</h3>
+			<span>+</span>
+		</div>
+	</div>
+
+	<div class="ph__header hidden-desktop">
+		<div class="header-title">
+			<h3>Payment history</h3>
+			<p>Money received and spent</p>
+		</div>
+		<div class="header-wrapper">
+			<div class="balance">
+				<span class="label-balance">Sort:</span>
+				<mat-form-field appearance="fill">
+					<mat-select [(ngModel)]="balance" disableOptionCentering>
+						<mat-option
+							*ngFor="let balance of balances"
+							[value]="balance.value"
+						>
+							{{ balance.viewValue }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div class="ph__add-money">
+				<h3>Add money</h3>
+				<span>+</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="ph__wrapper">
+		<h2>Payments and balance top-ups</h2>
+		<div class="balance hidden-desktop">
+			<span>Sort:</span>
+			<mat-form-field appearance="fill">
+				<mat-select [(ngModel)]="balance" disableOptionCentering>
+					<mat-option
+						*ngFor="let balance of balances"
+						[value]="balance.value"
+					>
+						{{ balance.viewValue }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+	<div class="ph__content">
+		<div class="content-header">
+			<div class="section-amount">
+				<span class="title">Amount</span>
+			</div>
+			<div class="section-description">
+				<span class="title">Description</span>
+			</div>
+			<div class="section-source">
+				<span class="title">Source</span>
+			</div>
+			<div class="section-date">
+				<span class="title">Date</span>
+			</div>
+		</div>
+		<div class="content-inner">
+			<div class="payment-item" *ngFor="let item of paymentHistory">
+				<div class="section-amount">
+					<p
+						[ngClass]="{
+							positive: item.amount.includes('+'),
+							negative: item.amount.includes('-')
+						}"
+					>
+						{{ item.amount }}
+					</p>
+				</div>
+				<div class="section-description">
+					<p>{{ item.description }}</p>
+				</div>
+				<div class="section-source">
+					<img [src]="item.img" />
+					<p class="hidden-mobile">{{ item.fullName }}</p>
+				</div>
+				<div class="section-date">
+					<p>{{ item.date }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ph__total">
+		<div class="total-earning">
+			<p>Total earning</p>
+			<h1>$ 43.750 USD</h1>
+		</div>
+		<div class="withdraw">
+			<button class="btn btn-light-blue">withdraw</button>
+		</div>
+	</div>
+</div>

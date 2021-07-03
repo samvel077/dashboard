@@ -1,0 +1,21 @@
+<div class="modal">
+	<div class="modal__header">
+		<button class="btn btn-light-blue volume">
+			<fa-icon class="modal__icon" [icon]="iconServ.faVolumeUp"></fa-icon>
+			Add from requests
+		</button>
+		<div class="close-modal hidden-desktop" (click)="onNoClick()">
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="email-section">
+		<label>Email</label>
+		<input placeholder="Email" />
+	</div>
+	<div class="send">
+		<button class="btn btn-light-blue btn-send" [mat-dialog-close]="true">
+			send invitation
+		</button>
+	</div>
+</div>

@@ -1,0 +1,66 @@
+<!-- Desktop header -->
+
+<nav class="navbar-menu hidden-mobile hidden listing-row">
+	<div class="navbar-menu__logo">
+		<img src="assets/logo.png" />
+	</div>
+	<ul class="navbar-menu__menu">
+		<li class="navbar-menu-item" *ngFor="let menu of navbarMenu">
+			<h3 class="title">{{menu}}</h3>
+		</li>
+	</ul>
+	<div class="navbar-menu__user-section">
+		<div class="user" [matMenuTriggerFor]="minMenu">
+			<img [src]="userPhoto" />
+		</div>
+		<button class="btn btn-light-blue">Add a space <span>+</span></button>
+	</div>
+</nav>
+
+<!-- mobile header -->
+
+<nav class="navbar-menu hidden-desktop listing-row">
+	<div class="navbar-menu__logo">
+		<img src="assets/logo.png" />
+	</div>
+	<div class="navbar-menu__user-section">
+		<div class="user" [matMenuTriggerFor]="minMenu">
+			<img [src]="userPhoto" />
+		</div>
+		<div class="navbar-menu__mobile" (click)="showMobileMenu(true)">
+			<div class="lines line-1"></div>
+			<div class="lines line-2"></div>
+			<div class="lines line-3"></div>
+		</div>
+	</div>
+</nav>
+
+<!-- Backdrop mboile menu -->
+
+<div [class.backdrop]="active" (click)="showMobileMenu(false)"></div>
+
+<!-- Mobile menu -->
+
+<div class="mobile-menu hidden-desktop" [class.show]="active">
+	<div class="mobile-menu__header">
+		<div class="mobile-menu__close" (click)="showMobileMenu(false)">
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="mobile-menu__wrapper">
+		<button class="btn btn-light-blue">Add a space <span>+</span></button>
+		<ul>
+			<li class="item" *ngFor="let menu of navbarMenu">
+				<h3 class="title">{{menu}}</h3>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!-- Mini menu -->
+
+<mat-menu #minMenu="matMenu" xPosition="after">
+	<button mat-menu-item>Setttings</button>
+	<button mat-menu-item>Log Out</button>
+</mat-menu>

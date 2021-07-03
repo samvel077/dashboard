@@ -1,0 +1,17 @@
+<div class="modal">
+	<div class="modal__header">
+		<div class="close-modal" (click)="onClose()">
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="modal__title">
+		<h2>{{ data.title }}</h2>
+	</div>
+	<div class="modal__button-group">
+		<button class="btn btn-light-blue" [mat-dialog-close]="data.id">
+			Yes
+		</button>
+		<button class="btn btn-light-gray" (click)="onClose()">No</button>
+	</div>
+</div>

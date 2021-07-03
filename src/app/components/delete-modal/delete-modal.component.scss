@@ -1,0 +1,70 @@
+@import '~src/style/vars';
+
+.modal {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	&__header {
+		position: absolute;
+		right: 1px;
+		top: 26px;
+	}
+
+	.close-modal {
+		width: 25px;
+		height: 25px;
+		position: relative;
+		top: -40px;
+		left: 25px;
+		cursor: pointer;
+		float: right;
+
+		div {
+			width: 2px;
+			height: 25px;
+			background: #d0d0d0;
+		}
+
+		div:first-child {
+			position: absolute;
+			top: 0;
+			left: -18px;
+			-ms-transform: rotate(45deg);
+			transform: rotate(45deg);
+			-ms-transform-origin: bottom right;
+			transform-origin: bottom right;
+		}
+
+		div:last-child {
+			-ms-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+			-ms-transform-origin: bottom left;
+			transform-origin: bottom left;
+		}
+	}
+
+	&__title {
+		margin-top: 30px;
+		text-align: center;
+		color: $colorPrimaryDarkBlue;
+	}
+
+	&__button-group {
+		display: flex;
+		justify-content: center;
+		margin-top: 40px;
+
+		.btn {
+			width: 30%;
+			height: 35px;
+
+			&:first-child {
+				margin-right: 10px;
+			}
+		}
+	}
+}
+
+@media (max-width: $largeMobile) {
+}

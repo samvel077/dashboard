@@ -1,0 +1,257 @@
+@import "~src/style/vars";
+@import "../../lisitng.scss";
+
+.listing {
+	width: 100%;
+	padding-top: 40px;
+
+	&__conteiner {
+		border-top: 5px solid $colorAccentLightGrey;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+
+	&__deskription {
+		width: 100%;
+
+		h2 {
+			margin-bottom: 12px;
+		}
+
+		&-text {
+			padding-bottom: 20px;
+		}
+
+		&-list {
+			width: 100%;
+			display: flex;
+			justify-content: flex-start;
+			padding-bottom: 40px;
+			padding-left: 20px;
+
+			&-first {
+				width: 35%;
+				ul {
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+
+			&-last {
+				width: 35%;
+				margin-left: 150px;
+
+				ul {
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+		}
+	}
+
+	&__lists {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1px solid $colorAccentLightGrey;
+		border-top: 1px solid $colorAccentLightGrey;
+		padding-top: 25px;
+		padding-bottom: 10px;
+
+		h3 {
+			margin-bottom: 20px;
+		}
+
+		&-first-group {
+			display: flex;
+			width: 35%;
+			justify-content: space-between;
+
+			li {
+				padding-bottom: 15px;
+				margin-left: 18px;
+			}
+		}
+
+		&-second-group {
+			display: flex;
+			width: 50%;
+			justify-content: space-between;
+
+			li {
+				padding-bottom: 15px;
+				margin-left: 18px;
+			}
+		}
+	}
+
+	&__rules-additional {
+		padding-top: 30px;
+		padding-bottom: 30px;
+
+		h3 {
+			margin-bottom: 12px;
+		}
+	}
+
+	&__rules {
+		width: 100%;
+
+		&-text {
+			padding-bottom: 20px;
+		}
+
+		&-list {
+			width: 100%;
+			display: flex;
+			justify-content: flex-start;
+			padding-bottom: 30px;
+			padding-left: 20px;
+
+			&-first {
+				width: 30%;
+				ul {
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+
+			&-last {
+				width: 50%;
+				margin-left: 185px;
+
+				ul {
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+		}
+	}
+
+	&__button {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+}
+
+@media (max-width: $largeMobile) {
+	.listing {
+		padding-top: 15px;
+
+		&__deskription {
+			&-list {
+				flex-direction: column;
+				padding-bottom: 5px;
+				padding-left: 20px;
+
+				&-first {
+					width: 100%;
+					li {
+						padding-bottom: 15px;
+						width: 48%;
+						font-size: 14px;
+						line-height: 17px;
+					}
+				}
+
+				&-last {
+					width: 100%;
+					margin-left: 0;
+
+					ul {
+						li {
+							font-size: 14px;
+							line-height: 17px;
+							padding-bottom: 15px;
+							width: 48%;
+						}
+					}
+				}
+			}
+		}
+
+		&__lists {
+			padding-top: 20px;
+			padding-bottom: 5px;
+			flex-direction: column;
+
+			h3 {
+				margin-bottom: 20px;
+			}
+
+			&-first-group {
+				display: flex;
+				width: 100%;
+				justify-content: space-between;
+
+				li {
+					font-size: 14px;
+					line-height: 17px;
+				}
+			}
+
+			&-comfort-list {
+				width: 50%;
+			}
+
+			&-furniture-list {
+				width: 50%;
+			}
+
+			&-second-group {
+				width: 100%;
+				flex-direction: column;
+
+				li {
+					font-size: 14px;
+					line-height: 17px;
+				}
+			}
+
+			&-buildings-list {
+				padding-top: 15px;
+			}
+
+			&-transport-list {
+				padding-top: 15px;
+			}
+		}
+
+		&__rules {
+			&-list {
+				flex-direction: column;
+				padding-bottom: 15px;
+
+				li {
+					padding-bottom: 15px;
+					font-size: 14px;
+					line-height: 17px;
+				}
+
+				&-first {
+					width: 100%;
+					ul {
+						flex-direction: column;
+					}
+				}
+
+				&-last {
+					width: 100%;
+					margin-left: 0px;
+
+					ul {
+						flex-direction: column;
+					}
+				}
+			}
+		}
+
+		&__button {
+			button {
+				width: 100%;
+			}
+		}
+	}
+}

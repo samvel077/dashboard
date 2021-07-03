@@ -1,0 +1,249 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './style/vars';
+@import './style/mixins';
+@import './style/mat-select';
+@import './style/mat-acardion';
+@import './style/checkbox';
+@import './style/button';
+@import './style/layout';
+@import './style/ngx-carousel';
+@import './style/mat-datepicker';
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+	&::before,
+	&::after {
+		box-sizing: inherit;
+	}
+}
+
+html,
+body,
+app-root {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	display: block;
+}
+
+body {
+	position: relative;
+	font-family: 'Lato', sans-serif;
+	color: $colorText;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.container {
+	width: 100%;
+	max-width: 1180px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 $blockSpacing;
+}
+
+.bg-dot {
+	background-image: url('/assets/background-dot.svg');
+	background-position: top center;
+	background-repeat: repeat;
+	background-size: 25px 25px;
+
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: $blockSpacing;
+	padding-bottom: $blockSpacing;
+}
+
+.space-between + .space-between {
+	margin-top: $blockSpacing;
+}
+
+.space-below {
+	margin-bottom: $blockSpacing;
+}
+
+.space-above {
+	margin-top: $blockSpacing;
+}
+
+// TEXT
+h1,
+h2,
+h3,
+h4 {
+	font-weight: normal;
+	margin-top: 0;
+	margin-bottom: 8px;
+	// font-family: 'Montserrat', sans-serif;
+
+	&.detail {
+		text-transform: uppercase;
+		color: $colorDetail;
+		//font-weight: bold;
+	}
+
+	@include lte('md') {
+		margin-bottom: 4px;
+	}
+}
+
+p {
+	margin: 8px 0;
+}
+
+h1 {
+	font-size: 46px;
+	line-height: 1.2;
+
+	@include lte('md') {
+		font-size: 30px;
+	}
+}
+
+h2 {
+	font-size: 33px;
+	line-height: 1.2;
+
+	@include lte('md') {
+		font-size: 24px;
+	}
+}
+
+h3 {
+	font-size: 24px;
+	line-height: 1.2;
+
+	@include lte('md') {
+		font-size: 18px;
+	}
+}
+
+.large-text {
+	font-size: 18px;
+}
+
+.section-title {
+	margin-bottom: $blockSpacing;
+}
+
+// HELPERS
+.uppercase {
+	text-transform: uppercase;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.container {
+	width: 1200px;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+
+	@include lte('md') {
+		padding-left: 3rem;
+		padding-right: 3rem;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+h1 {
+	font-size: 18px;
+}
+
+h2 {
+	font-size: 16px;
+}
+
+h3 {
+	font-size: 14px;
+}
+
+h4 {
+	font-size: 8px;
+}
+
+.cdk-overlay-dark-backdrop.cdk-overlay-backdrop-showing {
+	background: $colorPrimaryDarkBlue;
+	opacity: 0.7;
+}
+
+.hidden-desktop {
+	display: none;
+}
+
+.item-list-header {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 17px 12px 15px 24px;
+}
+
+.item-list {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 17px 12px 15px 24px;
+	height: 55px;
+	border-top: 1px solid #ebeff2;
+}
+
+.listing-row {
+	padding-right: 130px;
+	padding-left: 130px;
+}
+
+@media (max-width: $smallDevice) {
+	.listing-row {
+		padding: 0 50px;
+}
+}
+
+@media (max-width: $largeTablet) {
+	.listing-row {
+		padding: 0 35px;
+}
+}
+
+@media (max-width: $largeMobile) {
+	.hidden-desktop {
+		display: block;
+	}
+
+	.hidden-mobile {
+		display: none !important;
+	}
+
+	.mat-dialog-container {
+		width: 338px !important;
+		padding: 20px 15px !important;
+	}
+
+	.item-list-header {
+		padding: 13px 10px 15px 12px;
+	}
+
+	.item-list {
+		padding: 13px 5px 15px 12px;
+		height: auto;
+	}
+
+	.listing-row {
+		padding-right: 35px;
+		padding-left: 35px;
+	}
+}

@@ -1,0 +1,38 @@
+<div class="listing listing-row">
+	<div class="listing__viewed-conteiner">
+		<div class="listing__viewed">
+			<div class="listing__viewed-header">
+				<div class="listing__viewed-title">
+					<h2 class="title">Viewed</h2>
+				</div>
+			</div>
+			<div class="listing__viewed-wrapper" [class.hidden]="showMore" #wrapper>
+				<div class="viewed-item" *ngFor="let viewed of data">
+					<div class="image-section">
+						<img [src]="viewed.img" />
+						<div class="image-header">
+							<div class="item-of">
+								<span>1 OF {{viewed.numberof}}</span>
+							</div>
+							<fa-icon class="favorite-icon" [icon]="iconServ.faGratipay"></fa-icon>
+						</div>
+					</div>
+					<div class="info-section">
+						<h3 class="sub-title">{{viewed.meetingroom}} <sup>2</sup></h3>
+						<p class="address">{{viewed.address}}</p>
+						<div class="rating-section">
+							<p class="pay-day">{{viewed.money}}</p>
+							<div class="view-reating">
+								<label>{{viewed.reatinglabel}}</label>
+								<app-listing-rating [singleRatingWith]="viewed.reating"></app-listing-rating>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="listing__show-more" *ngIf="showMore">
+				<p (click)="showMore = false">Show more</p>
+			</div>
+		</div>
+	</div>
+</div>

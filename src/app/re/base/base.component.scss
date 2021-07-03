@@ -1,0 +1,33 @@
+@import '~src/style/vars';
+@import '~src/style/mixins';
+
+:host {
+	display: flex;
+	height: 100%;
+	align-items: stretch;
+
+	@include lte('md') {
+		display: block;
+	}
+
+	background-color: $colorGrayBackground;
+
+	.main {
+		display: flex;
+		flex-direction: column;
+		width: -webkit-fill-available;
+
+		.page {
+			padding: 2rem;
+			flex: 1 1 auto;
+		}
+	}
+
+	@media (max-width: $largeMobile) {
+		.main {
+			.page {
+				padding: 0rem 2rem 2rem 2rem;
+			}
+		}
+	}
+}

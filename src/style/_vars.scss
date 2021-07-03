@@ -1,0 +1,61 @@
+// Colors (deprecated)
+$colorDetail: #89d3fc;
+$colorSecondary: #8b97b7;
+$colorText: #445175;
+$colorVibrant: #55bdf7;
+$colorLight: #ebebeb;
+
+// Colors
+$colorBlue: #89d3fc;
+$colorBlueActive: #55bdf7;
+
+$colorViolet: #8b97b7;
+$colorDark: #445175;
+$colorTeal: #acfcf7;
+$colorGrayBackground: #ebebeb;
+$colorGrayIcon: #c2cfe0;
+
+$colorRed: #f7685b;
+$colorOrange: #ffb946;
+$colorGreen: #2ed47a;
+
+/* responsive variables*/
+
+$largeDevice: 1361px;
+$smallDevice: 1360px;
+$largeTablet: 1190px;
+$smallTablet: 991px;
+$largeMobile: 767px;
+$smallMobile: 400px;
+
+/* colors */
+
+$colorPrimaryLightBlue: #89d3fc;
+$colorPrimaryBlue: #55bdf7;
+$colorPrimaryDarkBlue: #445175;
+$colorPrimaryDarkGray: #c2cfe0;
+$coloPrimaryViolet: #8b97b7;
+$colorAccentWhite: #ffffff;
+$colorAccentLightGrey: #ebeff2;
+$colorAccentRed: #f7685b;
+
+/* colors end */
+
+/* font-variables*/
+
+$Bigfont: 14px;
+$Mainfont: 12px;
+$Caption: 10px;
+
+/*end-font-variables*/
+
+// Sizing
+$blockSpacing: 32px;
+
+$breakpoints: (
+	'xs': 0px,
+	'sm': 480px,
+	'md': 770px,
+	'lg': 1024px,
+	'xl': 1920px,
+);

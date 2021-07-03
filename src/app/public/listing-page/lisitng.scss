@@ -1,0 +1,63 @@
+@import "~src/style/vars";
+
+.title {
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: 600;
+	font-family: Montserrat;
+	color: $colorPrimaryDarkBlue;
+}
+
+.sub-title {
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: 600;
+	font-family: Lato;
+	color: $colorPrimaryDarkBlue;
+}
+
+.text {
+	font-size: 14px;
+	font-family: Lato;
+	line-height: 17px;
+	color: $colorPrimaryDarkBlue;
+}
+
+.list {
+	span {
+		margin-left: 3px;
+		font-family: Lato;
+		font-size: 14px;
+		line-height: 17px;
+		color: $colorPrimaryDarkBlue;
+	}
+
+	li {
+		position: relative;
+		font-family: Lato;
+		font-size: 12px;
+		line-height: 14px;
+		color: $coloPrimaryViolet;
+
+		&.area {
+			span {
+				margin-left: 10px;
+			}
+			sup {
+				position: absolute;
+				top: -2px;
+			}
+		}
+	}
+
+	li::before {
+		content: "";
+		position: absolute;
+		left: -18px;
+		top: 5px;
+		width: 10px;
+		height: 10px;
+		background: $colorPrimaryLightBlue;
+		border-radius: 50%;
+	}
+}

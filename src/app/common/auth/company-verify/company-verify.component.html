@@ -1,0 +1,5 @@
+<ng-container *ngIf="status === null">Activating account...</ng-container>
+<ng-container *ngIf="status === true"
+	>Account activated, go to <a routerLink="/login">login</a></ng-container
+>
+<ng-container *ngIf="status === false">Error, try again later</ng-container>

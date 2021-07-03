@@ -1,0 +1,34 @@
+<div class="listing">
+   <div class="listing__gallery-conteiner">
+      <div class="listing__gallery-header listing-row">
+         <h3 class="title">Meeting room. 10 m<sup>2</sup></h3>
+         <p class="address">Amsterdam, Noord-Holland, Netherlands</p>
+         <div class="rating-section">
+            <p class="pay-day">$ 24/DAY</p>
+            <div class="view-reating">
+               <label>2.5</label>
+               <div class="hidden-mobile">
+                  <app-listing-rating [singleRatingWithMidSize]="50"></app-listing-rating>
+               </div>
+               <div class="hidden-desktop">
+                  <app-listing-rating [singleRatingWithBigSize]="50"></app-listing-rating>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="listing__gallery-carousel listing-row">
+         <ngx-gallery [options]="galleryOptions" [images]="galleryImages">
+         </ngx-gallery>
+      </div>
+      <div class="listing__gallery-calendar listing-row">
+         <button class="btn btn-light-blue">Book Now</button>
+         <mat-form-field appearance="fill" class="datepicker hidden-mobile">
+            <mat-label>Check In</mat-label>
+            <input matInput [matDatepicker]="picker" autocomplete="off" [(ngModel)]="date">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+         </mat-form-field>
+      </div>
+   </div>
+</div>

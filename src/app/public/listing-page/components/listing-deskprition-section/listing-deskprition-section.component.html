@@ -1,0 +1,127 @@
+<div class="listing listing-row">
+	<div class="listing__conteiner">
+		<div class="listing__deskription">
+			<div class="listing__deskription-title">
+				<h2 class="title">Description</h2>
+			</div>
+			<div class="listing__deskription-text">
+				<span class="text">It’s great! Some information about our prrosess. A little morre and more. Amsterdam
+					was founded at the Amstel, that was dammed to control flooding, and the city's name derives from the
+					Amstel dam. Originating as a small fishing village in the late 12th century, Amsterdam became one of
+					the most important ports in the world during the Dutch Golden Age of the 17th century, and became
+					the leading centre for finance and trade.</span>
+			</div>
+			<div class="listing__deskription-list">
+				<div class="listing__deskription-list-first">
+					<ul class="list">
+						<li>
+							Floor <span>12</span>
+						</li>
+						<li>
+							Floors in the building <span>28</span>
+						</li>
+					</ul>
+				</div>
+				<div class="listing__deskription-list-last">
+					<ul class="list">
+						<li>
+							Object type <span>Brick</span>
+						</li>
+						<li class="area">
+							Area ms<sup>2</sup> <span>85</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="listing__lists">
+			<div class="listing__lists-first-group">
+				<div class="listing__lists-comfort-list">
+					<ul class="list">
+						<h3 class="sub-title">Comfort</h3>
+						<li *ngFor="let item of comfort">
+							{{item.name}} <span>{{item.text}}</span>
+						</li>
+					</ul>
+				</div>
+				<div class="listing__lists-furniture-list">
+					<ul class="list">
+						<h3 class="sub-title">Furniture</h3>
+						<li *ngFor="let item of furniture">
+							{{item.name}} <span>{{item.text}}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="listing__lists-second-group">
+				<div class="listing__lists-buildings-list">
+					<ul class="list">
+						<h3 class="sub-title">Buildings and surroundings</h3>
+						<li *ngFor="let item of buildings_surroundings">
+							{{item.name}} <span>{{item.text}}</span>
+						</li>
+					</ul>
+				</div>
+				<div class="listing__lists-transport-list">
+					<ul class="list">
+						<h3 class="sub-title">Transport services and parking</h3>
+						<li *ngFor="let item of transport_parking">
+							{{item.name}} <span>{{item.text}}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="listing__rules-additional">
+			<div class="listing__rules">
+				<div class="listing__rules-title">
+					<h3 class="sub-title">Rules</h3>
+				</div>
+				<div class="listing__rules-text">
+					<span class="text">It’s great! Some information about our prrosess. A little morre and more.
+						Amsterdam was founded at the Amstel, that was dammed to control flooding, and the city's name
+						derives from the Amstel dam. Originating as a small fishing village in the late 12th century,
+						Amsterdam became one of the most important ports in the world during the Dutch Golden Age of the
+						17th century, and became the leading centre for finance and trade.</span>
+				</div>
+				<div class="listing__rules-list">
+					<div class="listing__rules-list-first">
+						<ul class="list">
+							<li>
+								Smoking: <span>No</span>
+							</li>
+							<li>
+								Pets: <span>No</span>
+							</li>
+						</ul>
+					</div>
+					<div class="listing__rules-list-last">
+						<ul class="list">
+							<li>
+								Payment to current account: <span>Yes</span>
+							</li>
+							<li>
+								Age restrictions from 18 years: <span>Yes</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="listing__additional">
+				<div class="listing__additional-title">
+					<h3 class="sub-title">Additional</h3>
+				</div>
+				<div class="listing__additional-text">
+					<span class="text">It’s great! Some information about our prrosess. A little morre and more.
+						Amsterdam was founded at the Amstel, that was dammed to control flooding, and the city's name
+						derives from the Amstel dam. Originating as a small fishing village in the late 12th century,
+						Amsterdam became one of the most important ports in the world during the Dutch Golden Age of the
+						17th century, and became the leading centre for finance and trade.</span>
+				</div>
+			</div>
+		</div>
+		<div class="listing__button">
+			<button class="btn">sent request</button>
+		</div>
+	</div>
+</div>

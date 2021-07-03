@@ -1,0 +1,247 @@
+<app-auth-header
+	label="Already have an account?"
+	buttonLabel="login"
+	link="/login"
+></app-auth-header>
+<section class="container">
+	<div class="flex-row align-stretch wrap-md">
+		<div class="hero-col col-50 col-md-100">
+			<img
+				class="show-lte-md"
+				src="/assets/images/signup-screen-back.png"
+			/>
+			<img
+				class="hide-lte-md"
+				src="/assets/images/signup-screen-back-large.png"
+			/>
+		</div>
+		<div class="form-col col-50 col-md-100">
+			<div class="form-section">
+				<form [formGroup]="formSignup" (ngSubmit)="signup()">
+					<ng-container formGroupName="company">
+						<div class="form-group">
+							<label>Company Name<span>*</span></label>
+							<input
+								formControlName="name"
+								type="text"
+								class="form-control"
+							/>
+						</div>
+
+						<ng-container formGroupName="address">
+							<div class="form-group flex-row equals">
+								<div>
+									<label>Street<span>*</span></label>
+									<input
+										formControlName="street"
+										type="text"
+										class="form-control"
+									/>
+								</div>
+								<div>
+									<label>Number<span>*</span></label>
+									<input
+										formControlName="number"
+										type="text"
+										class="form-control"
+									/>
+								</div>
+							</div>
+
+							<div class="form-group flex-row equals">
+								<div>
+									<label>Postal<span>*</span></label>
+									<input
+										formControlName="postal"
+										type="text"
+										class="form-control"
+									/>
+								</div>
+								<div>
+									<label>City<span>*</span></label>
+									<input
+										formControlName="city"
+										type="text"
+										class="form-control"
+									/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div>
+									<label>Country<span>*</span></label>
+									<input
+										formControlName="country"
+										type="text"
+										class="form-control"
+									/>
+								</div>
+							</div>
+						</ng-container>
+					</ng-container>
+
+					<ng-container formGroupName="companyAdmin">
+						<div class="form-group flex-row equals">
+							<div>
+								<label>First Name<span>*</span></label>
+								<input
+									formControlName="firstName"
+									type="text"
+									class="form-control"
+								/>
+							</div>
+							<div>
+								<label>Last Name<span>*</span></label>
+								<input
+									formControlName="lastName"
+									type="text"
+									class="form-control"
+								/>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label>Email<span>*</span></label>
+							<input
+								formControlName="email"
+								type="email"
+								class="form-control"
+							/>
+							<div
+								*ngIf="
+									submitted &&
+									formSignup.get('companyAdmin.email')
+										?.invalid
+								"
+								class="error-form"
+							>
+								<div
+									*ngIf="
+										formSignup
+											.get('companyAdmin.lastName')
+											?.hasError('email')
+									"
+								>
+									Email must be a valid email address
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group mb-0">
+							<label>Password<span>*</span></label>
+							<input
+								formControlName="password"
+								type="password"
+								class="form-control"
+							/>
+							<div
+								*ngIf="
+									submitted &&
+									formSignup.get('companyAdmin.password')
+										?.invalid
+								"
+								class="error-form"
+							>
+								<div
+									*ngIf="
+										formSignup
+											.get('companyAdmin.password')
+											?.hasError('minlength')
+									"
+								>
+									Password needs to have more than 8
+									characters
+								</div>
+								<div
+									*ngIf="
+										formSignup
+											.get('companyAdmin.password')
+											?.hasError('passwordStrength')
+									"
+								>
+									{{
+										formSignup.get('companyAdmin.password')
+											?.errors?.passwordStrength
+									}}
+								</div>
+							</div>
+							<p class="regular">
+								Please use at least 8 characters, including
+								letters, numbers and symbols. You should not use
+								your name or username.
+							</p>
+						</div>
+						<!-- <div class="forgot-images">
+							<img src="/assets/images/recaptcha-sample.png" />
+						</div> -->
+
+						<div class="form-group">
+							<div class="form-checkbox">
+								<label>
+									<div>
+										<input type="checkbox" />
+										<span class="check-span"></span>
+									</div>
+									<span>
+										By filling out this form using a social
+										or social account network, I accept the
+										User Agreement
+									</span>
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn outline icon-left">
+								<fa-icon [icon]="faUser"></fa-icon>Sign up
+							</button>
+						</div>
+					</ng-container>
+
+					<div class="hide-gt-md form-auth-section">
+						<div class="forgot-link">
+							<a>Don't have an account</a>
+						</div>
+						<a class="btn btn-border btn-signin">
+							<fa-icon [icon]="faKey"></fa-icon>sign In
+						</a>
+					</div>
+
+					<!-- <hr />
+					<div class="form-bottom-section">
+						<h5>or create an account using</h5>
+						<ul>
+							<li>
+								<a>
+									<img class="show-lte-md" src="/assets/images/icons/ico-github.png" />
+									<img class="hide-lte-md" src="/assets/images/icons/ico-github-large.png" />
+								</a>
+							</li>
+							<li>
+								<a>
+									<img class="show-lte-md" src="/assets/images/icons/ico-google.png" />
+									<img class="hide-lte-md" src="/assets/images/icons/ico-google-large.png" />
+								</a>
+							</li>
+							<li>
+								<a><img class="show-lte-md" src="/assets/images/icons/ico-twitter.png" /></a>
+								<a><img class="hide-lte-md" src="/assets/images/icons/ico-twitter-large.png" /></a>
+							</li>
+							<li>
+								<a>
+									<img class="show-lte-md" src="/assets/images/icons/ico-salesforce.png" />
+									<img class="hide-lte-md" src="/assets/images/icons/ico-salesforce-large.png" />
+								</a>
+							</li>
+							<li>
+								<a>
+									<img class="show-lte-md" src="/assets/images/icons/ico-bit.png" />
+									<img class="hide-lte-md" src="/assets/images/icons/ico-bit-large.png" />
+								</a>
+							</li>
+						</ul>
+					</div> -->
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

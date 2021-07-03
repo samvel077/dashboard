@@ -1,0 +1,79 @@
+<div class="pl">
+	<div class="pl__header hidden-mobile">
+		<h1>Property list</h1>
+		<div [routerLink]="'/re/property/new'" class="pl__add-space">
+			<h3>Add property</h3>
+			<span>+</span>
+		</div>
+	</div>
+
+	<div class="pl__header hidden-desktop">
+		<div class="header-title">
+			<h3>Property list</h3>
+			<p>Property list</p>
+		</div>
+		<div
+			[routerLink]="'/re/property/new'"
+			class="pl__add-space item-list-header"
+		>
+			<h3>Add property</h3>
+			<span>+</span>
+		</div>
+	</div>
+
+	<div class="pl__content">
+		<div class="content-header item-list-header">
+			<div class="content-section-title">
+				<span class="title">Title</span>
+			</div>
+			<div class="content-section-status">
+				<span class="title">Status</span>
+			</div>
+			<div class="content-section-spaces">
+				<span class="title">x spaces</span>
+			</div>
+			<div class="content-section-edit-delete">
+				<span class="title"></span>
+			</div>
+		</div>
+		<div class="content-inner">
+			<div
+				class="space-item item-list"
+				*ngFor="let property of properties"
+			>
+				<div class="content-section-title">
+					<p>{{ property.title }}</p>
+				</div>
+				<div class="content-section-status">
+					<p>{{ property.status }}</p>
+				</div>
+				<div class="content-section-spaces">
+					<p [routerLink]="'/re/property/' + property.id + '/space'">
+						x spaces {{ property.id }}
+					</p>
+				</div>
+
+				<div class="content-section-edit-delete">
+					<div
+						[routerLink]="'/re/property/' + property.id"
+						class="section-edit btn-circle"
+					>
+						<fa-icon
+							class="icon"
+							[icon]="iconServ.faPencil"
+						></fa-icon>
+					</div>
+					<div
+						class="section-delete btn-circle"
+						(click)="deleteProperty(property.id)"
+					>
+						<fa-icon
+							class="icon"
+							[icon]="iconServ.faTrashAlt"
+						></fa-icon>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

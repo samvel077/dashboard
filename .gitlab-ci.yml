@@ -1,0 +1,143 @@
+stages:
+  - build
+  - deploy
+
+.docker:
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:19.03
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_TLS_VERIFY: 1
+    DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+  services:
+    - name: docker:19.03-dind
+      command: ["--log-level", "error"]
+  before_script:
+    - until docker info; do sleep 1; done
+    - echo -n "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+    - echo -n "$CI_DEPENDENCY_PROXY_PASSWORD" | docker login -u "$CI_DEPENDENCY_PROXY_USER" --password-stdin "$CI_DEPENDENCY_PROXY_SERVER"
+    - cp -r ~/.docker $(dirname $CI_PROJECT_DIR)
+
+.build:
+  extends: .docker
+  stage: build
+  only:
+    refs:
+      - master
+      - beta
+      - tags
+  variables:
+    IMAGE: $CI_REGISTRY_IMAGE
+    TAG: dev
+    BUILDKIT_CACHE_ARCHIVE: .buildkit-cache.tar
+    BUILDKIT_CACHE_FOLDER: ../.buildkit-cache
+  script:
+    - export TAG=${TAG//\//.}
+    - mkdir -p "$BUILDKIT_CACHE_FOLDER"
+    - '[ -f "$BUILDKIT_CACHE_ARCHIVE" ] && (tar -xf "$BUILDKIT_CACHE_ARCHIVE" -C "$BUILDKIT_CACHE_FOLDER" && rm "$BUILDKIT_CACHE_ARCHIVE") || true'
+    - printf '\n%s' "$BUILDKIT_CACHE_ARCHIVE" >> .dockerignore
+    - cat .npmrc | sed "s/\${NPM_TOKEN_ROODIT_SCOPE}/$NPM_TOKEN_ROODIT_SCOPE/g" | sed "s/\${FONT_AWESOME_KEY}/$FONT_AWESOME_KEY/g"  > .npmrc-with-values
+    - ls -al
+    - cat .dockerignore
+    - >
+      docker run
+      --rm
+      --privileged
+      --mount type=bind,source="$(dirname $CI_PROJECT_DIR)/.docker",target=/root/.docker
+      --mount type=bind,source="$(pwd)",target=/data
+      --mount type=bind,source="$(pwd)/../.buildkit-cache",target=/var/lib/buildkit
+      --entrypoint="buildctl-daemonless.sh"
+      ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/moby/buildkit:latest
+      build
+      --frontend dockerfile.v0
+      --local context=/data/.
+      --local dockerfile="/data"
+      --secret id=npmrc,src=/data/.npmrc-with-values
+      --output type=image,\"name=$IMAGE:$TAG,$IMAGE:$CI_COMMIT_SHA\",push=true
+      --export-cache type=registry,ref="$IMAGE:buildcache.$TAG",mode=max,push=true
+      --import-cache type=registry,ref="$IMAGE:buildcache.$TAG"
+      --import-cache type=registry,ref="$IMAGE:buildcache.beta"
+      --import-cache type=registry,ref="$IMAGE:buildcache.master"
+  after_script:
+    - >
+      docker run
+      --rm
+      --privileged
+      --mount type=bind,source="$(pwd)/../.buildkit-cache",target=/var/lib/buildkit
+      --entrypoint="buildctl-daemonless.sh"
+      ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/moby/buildkit:latest
+      prune --all --until '15m'
+    - tar -cf "$BUILDKIT_CACHE_ARCHIVE" -C "$BUILDKIT_CACHE_FOLDER" .
+  cache:
+    key: "$CI_COMMIT_REF_SLUG-buildcache"
+    paths:
+      - .buildkit-cache.tar
+
+build:beta:
+  extends: .build
+  only:
+    refs:
+      - beta
+  variables:
+    TAG: beta
+
+build:master:
+  extends: .build
+  only:
+    refs:
+      - master
+  variables:
+    TAG: master
+
+.deploy:
+  stage: deploy
+  image:
+    name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/alpine/helm:3.5.4
+    entrypoint: [""]
+  only:
+    changes:
+      - "**/*"
+  variables:
+    DEPLOYMENT_NAME: dashboard-backend
+  script:
+    - >
+      helm upgrade
+      dashboard
+      ./.helm
+      --install
+      --namespace $KUBE_NAMESPACE
+      --create-namespace
+      --set deploymentEnvironment=$HOST_ENVIRONMENT
+      --set image.tag=$CI_COMMIT_SHA
+      --set gitlab.projectPathSlug=$CI_PROJECT_PATH_SLUG
+      --set gitlab.environmentSlug=$CI_ENVIRONMENT_SLUG
+      --values $HELM_SECRET_VALUES
+      --values values.yaml
+
+deploy:prod:
+  extends: .deploy
+  only:
+    refs:
+      - master
+  variables:
+    TAG: master
+    HOST_ENVIRONMENT: ""
+  environment:
+    name: Production
+    url: https://dashboard.roodit.nl
+    kubernetes:
+      namespace: production
+
+deploy:staging:
+  extends: .deploy
+  only:
+    refs:
+      - beta
+  variables:
+    TAG: beta
+    HOST_ENVIRONMENT: beta
+  environment:
+    name: Staging
+    url: https://dashboard.beta.roodit.nl
+    kubernetes:
+      namespace: staging

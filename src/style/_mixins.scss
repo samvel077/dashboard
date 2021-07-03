@@ -1,0 +1,284 @@
+@import './vars';
+
+// VARIABLES
+$breakpoints: (
+	'xs': 0px,
+	'sm': 480px,
+	'md': 770px,
+	'lg': 1024px,
+	'xl': 1920px,
+);
+// END: VARIABLES
+
+$breakpointsNext: (
+	'xs': 'sm',
+	'sm': 'md',
+	'md': 'lg',
+	'lg': 'xl',
+	'xl': 'xl',
+);
+
+@function __helper__next-breakpoint($key) {
+	@return map-get($breakpoints, map-get($breakpointsNext, $key));
+}
+
+// FILE ONLY
+@mixin __helper__breakpoint($minMax, $useNext, $key) {
+	$prop: '#{$minMax}-width'; // max-width
+	$offset: if($minMax == 'min', 0, -1); // -1
+	@if ($key) {
+		$value: if(
+			$useNext,
+			__helper__next-breakpoint($key) + $offset,
+			map-get($breakpoints, $key) + $offset
+		);
+		@media ($prop: $value) {
+			@content;
+		}
+	} @else {
+		@each $shorthand, $breakpoint in $breakpoints {
+			$value: if(
+				$useNext,
+				__helper__next-breakpoint($shorthand) + $offset,
+				$breakpoint + $offset
+			);
+
+			@media ($prop: $value) {
+				&-#{$shorthand} {
+					@content;
+				}
+			}
+		}
+	}
+}
+
+// INTERNAL
+@mixin __breakpoints-all() {
+	&-lte {
+		@include lte() {
+			@content;
+		}
+	}
+	&-lt {
+		@include lt() {
+			@content;
+		}
+	}
+	&-gte {
+		@include gte() {
+			@content;
+		}
+	}
+	&-gt {
+		@include gt() {
+			@content;
+		}
+	}
+}
+
+@mixin __breakpoints-all-inv() {
+	&-lte {
+		@include gt() {
+			@content;
+		}
+	}
+	&-lt {
+		@include gte() {
+			@content;
+		}
+	}
+	&-gte {
+		@include lt() {
+			@content;
+		}
+	}
+	&-gt {
+		@include lte() {
+			@content;
+		}
+	}
+}
+
+// PUBLIC
+@mixin lte($key: null) {
+	@include __helper__breakpoint('max', true, $key) {
+		@content;
+	}
+}
+
+@mixin lt($key: null) {
+	@include __helper__breakpoint('max', false, $key) {
+		@content;
+	}
+}
+
+@mixin gte($key: null) {
+	@include __helper__breakpoint('min', false, $key) {
+		@content;
+	}
+}
+
+@mixin gt($key: null) {
+	@include __helper__breakpoint('min', true, $key) {
+		@content;
+	}
+}
+
+// @mixin flex-row {
+// 	display: flex;
+// 	flex-direction: row;
+
+// 	& > * {
+// 		//flex-grow: 1;
+// 	}
+
+// 	.col-fill {
+// 		flex-grow: 1;
+// 	}
+
+// 	.col-content {
+// 		flex: 0 0 auto;
+// 	}
+// }
+
+// @mixin flex-gap($_gap: $gap) {
+// 	margin-left: (-$_gap/2);
+// 	margin-right: (-$_gap/2);
+// 	& > * {
+// 		margin-left: ($_gap/2);//!important;
+// 		margin-right: ($_gap/2);//!important;
+// 	}
+// 	//$gap: $_gap * 1px !global;
+
+// 	&.wrap {
+// 		flex-wrap: wrap;
+
+// 		&:not(.no-gap) {
+// 			margin-top: (-$_gap/2);
+// 			margin-bottom: (-$_gap/2);
+
+// 			& > * {
+// 				margin-top: ($_gap/2);
+// 				margin-bottom: ($_gap/2);
+// 			}
+// 		}
+// 	}
+// }
+
+// @mixin flex-collapse() {
+// 	$prev: '';
+// 	@each $shorthand, $breakpoint in $breakpoints {
+// 		@if $prev != '' {
+// 			@media (max-width: ($breakpoint - 1)) {
+// 				&.collapse-#{$prev} {
+// 					flex-direction: column;
+// 					margin-left: 0;
+// 					margin-right: 0;
+// 					& > * {
+// 						margin-left: 0;//!important;
+// 						margin-right: 0;//!important;
+// 					}
+
+// 					&.collapse-with-space > * {
+// 						margin-bottom: $blockSpacing;
+// 						&:last-child {
+// 							margin-bottom: 0;
+// 						}
+// 					}
+// 					.limit-height {
+// 						height: auto;
+// 					}
+// 				}
+// 			}
+
+// 		}
+// 		$prev: $shorthand;
+// 	}
+// }
+
+// @mixin __col($suffix, $width, $gap) {
+// 	.col-#{$suffix} {
+// 		flex: 0 0 calc(#{$width} - #{$gap});
+// 	}
+// }
+
+// @mixin flex-cols($n, $gap) {
+// 	@for $t from 1 to $n {
+// 		@include __col('#{$t}-#{$n}', (($t/$n) * 100%), $gap);
+// 	}
+// }
+
+// @mixin flex-all-cols($gap: $gap) {
+// 	// Fractions
+// 	@each $n in 2, 3, 4, 5, 6, 8, 10, 12 {
+// 		@for $t from 1 to $n {
+// 			@include __col('#{$t}-#{$n}', (($t/$n) * 100%), $gap);
+// 		}
+// 	}
+
+// 	@each $br in map-keys($breakpoints) {
+// 		@include lt($br) {
+// 			@each $n in 2, 3, 4, 5, 6, 8, 10, 12 {
+// 				@for $t from 1 to $n {
+// 					@include __col('#{$br}-#{$t}-#{$n}', (($t/$n) * 100%), $gap);
+// 				}
+// 			}
+// 		}
+// 	}
+
+// 	// Percentages
+// 	@for $n from 1 through 20 {
+// 		$perc: ($n * 5);
+// 		@include __col('#{$perc}', ($perc * 1%), $gap);
+// 	}
+
+// 	@each $br in map-keys($breakpoints) {
+// 		@for $n from 1 through 20 {
+// 			$perc: ($n * 5);
+// 			@include lt($br) {
+// 				@include __col('#{$br}-#{$perc}', ($perc * 1%), $gap);
+// 			}
+// 		}
+// 	}
+
+// 	@for $n from 1 through 10 {
+// 		.col-rel-#{$n} {
+// 			flex: #{$n} #{10-$n} 0px;//#{$n * 10px};
+// 			width: 0px;
+
+// 		}
+// 	}
+// }
+
+// @mixin flex-equal-cols() {
+// 	& > *, .flex-grid-col {
+// 		flex: 1 1 100%;
+// 	}
+// }
+
+// @mixin col($a, $b: null) {
+// 	@if ($b) {
+// 		flex-basis: calc(#{$a / $b * 100%} - #{$gap});
+// 	}
+// 	@else if ($a < 1) {
+// 		flex-basis: calc(#{$a * 100%} - #{$gap});
+// 	}
+// 	@else {
+// 		flex-basis: calc(#{$a * 1%} - #{$gap});
+// 	}
+// }
+
+// @mixin col-gap($a, $b, $c: null) {
+// 	@if ($c) {
+// 		$gap: $c;
+// 		flex-basis: calc(#{$a / $b * 100%} - #{$gap});
+// 	}
+// 	@else if ($a < 1) {
+// 		$gap: $b;
+// 		flex-basis: calc(#{$a * 100%} - #{$gap});
+// 	}
+// 	@else {
+// 		$gap: $b;
+// 		flex-basis: calc(#{$a * 1%} - #{$gap});
+// 	}
+// }
