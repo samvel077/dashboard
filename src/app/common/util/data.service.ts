@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, Optional } from '@angular/core';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { TXModel } from '@tiess/tx-model';
+// import { TXModel } from '@tiess/tx-model';
 import { Request } from 'express';
 import { stringify } from 'query-string';
 
@@ -37,15 +37,15 @@ export class DataService {
 		resource: string,
 		filter?: any
 	): Promise<T[]>;
-	async get<T extends typeof TXModel>(
+	async get<T>(
 		resource: string,
 		asClass: T
-	): Promise<InstanceType<T>[]>;
-	async get<T extends typeof TXModel>(
+	): Promise<InstanceType<any>[]>;
+	async get<T>(
 		resource: string,
 		filter: any,
-		asClass: T
-	): Promise<InstanceType<T>[]>;
+		asClass: any
+	): Promise<InstanceType<any>[]>;
 	async get(
 		resource: string,
 		filterOrAsClass: any,
@@ -53,7 +53,7 @@ export class DataService {
 	): Promise<any> {
 		const isClass =
 			_asClass == null
-				? filterOrAsClass?.prototype instanceof TXModel
+				? filterOrAsClass?.prototype
 				: false;
 		const filter = !isClass ? filterOrAsClass : {};
 		const asClass = isClass ? filterOrAsClass : _asClass;
@@ -79,15 +79,15 @@ export class DataService {
 		resource: string,
 		filter?: any
 	): Promise<T>;
-	async getOne<T extends typeof TXModel>(
+	async getOne<T>(
 		resource: string,
 		asClass: T
-	): Promise<InstanceType<T>>;
-	async getOne<T extends typeof TXModel>(
+	): Promise<InstanceType<any>>;
+	async getOne<T>(
 		resource: string,
 		filter: any,
 		asClass: T
-	): Promise<InstanceType<T>>;
+	): Promise<InstanceType<any>>;
 	async getOne<T>(
 		resource: string,
 		filterOrAsClass: any,
@@ -95,10 +95,10 @@ export class DataService {
 	): Promise<any> {
 		const isClass =
 			_asClass == null
-				? filterOrAsClass?.prototype instanceof TXModel
+				? filterOrAsClass?.prototype
 				: false;
 		const filter = !isClass ? filterOrAsClass : {};
-		const asClass: typeof TXModel = isClass ? filterOrAsClass : _asClass;
+		const asClass: any = isClass ? filterOrAsClass : _asClass;
 
 		return this.http
 			.get(
@@ -117,11 +117,11 @@ export class DataService {
 	}
 
 	async getID<T extends any = any>(resource: string, id: any): Promise<T>;
-	async getID<T extends typeof TXModel>(
+	async getID<T>(
 		resource: string,
 		id: any,
 		asClass: T
-	): Promise<InstanceType<T>>;
+	): Promise<InstanceType<any>>;
 	async getID(resource: string, id: any, asClass?: any): Promise<any> {
 		return this.http
 			.get(`${this.basePath}/${resource.replace(/^\//, '')}/${id}`)

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faSignOut } from '@fortawesome/pro-light-svg-icons';
-import { RooditModels } from '@rooditdev/models';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+// import { RooditModels } from '@rooditdev/models';
 import { IconsService } from 'src/app/common/icons.service';
 import { AuthService } from 'src/app/common/util/auth.service';
 
@@ -12,9 +12,9 @@ import { AuthService } from 'src/app/common/util/auth.service';
 })
 export class SidebarComponent implements OnInit {
 	@Input() items: any[] = [];
-	@Input() user?: RooditModels.Base.Employee<any>;
+	@Input() user?: any;
 
-	iconLogout = faSignOut;
+	iconLogout = faSignOutAlt;
 
 	constructor(
 		public iconServ: IconsService,

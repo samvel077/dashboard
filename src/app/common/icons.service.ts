@@ -14,15 +14,12 @@ import {
 	faHome,
 	faUserAlt,
 	faUserFriends,
-	faPencil,
 	faPeopleArrows,
 	faShippingFast,
-	faClipboardPrescription,
 	faBars,
 	faHeart,
-	faHeartCircle,
 	faCalendarAlt
-} from '@fortawesome/pro-light-svg-icons';
+} from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
 	providedIn: 'root',
@@ -41,13 +38,13 @@ export class IconsService {
 	faHome = faHome;
 	faUserAlt = faUserAlt;
 	faUserFriends = faUserFriends;
-	faPencil = faPencil;
+	faPencil = '';
 	faPeopleArrows = faPeopleArrows;
 	faShippingFast = faShippingFast;
-	faClipboardPrescription = faClipboardPrescription;
+	faClipboardPrescription = '';
 	faBars = faBars;
 	faHeart= faHeart;
-	faHeartCircle = faHeartCircle;
+	faHeartCircle = '';
 	faGratipay = faGratipay;
 	faCalendarAlt = faCalendarAlt
 

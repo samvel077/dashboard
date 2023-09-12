@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, Optional } from '@angular/core';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
-import { JwtHelperService } from '@auth0/angular-jwt';
+// import { JwtHelperService } from '@auth0/angular-jwt';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
@@ -11,7 +11,7 @@ import { DataService } from 'src/app/common/util/data.service';
 	providedIn: 'root',
 })
 export class AuthService {
-	jwtService = new JwtHelperService();
+	// jwtService = new JwtHelperService();
 
 	private token?: string;
 
@@ -77,12 +77,12 @@ export class AuthService {
 
 	getTokenData(): any {
 		const token = this.getToken();
-		return token && this.jwtService.decodeToken(token);
+		return token;
 	}
 
 	public isLoggedIn(): boolean {
 		const token = this.getToken();
-		return token !== null && !this.jwtService.isTokenExpired(token);
+		return token !== null;
 	}
 
 	public isLoggedOut(): boolean {

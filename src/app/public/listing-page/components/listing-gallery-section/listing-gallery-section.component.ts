@@ -4,7 +4,7 @@ import { IconsService } from 'src/app/common/icons.service';
 import {
    faChevronLeft,
    faChevronRight,
-} from '@fortawesome/pro-light-svg-icons';
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
    selector: 'app-listing-gallery-section',

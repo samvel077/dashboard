@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faKey, faUser } from '@fortawesome/free-solid-svg-icons';
-import { RooditModels } from '@rooditdev/models';
+// import { RooditModels } from '@rooditdev/models';
 import { DataService } from 'src/app/common/util/data.service';
 import { PasswordStrengthValidator } from '../password-strength.validators';
 
@@ -63,9 +63,7 @@ export class SignupComponent implements OnInit {
 		if (this.formSignup?.status === 'VALID') {
 			console.log(this.formSignup?.value);
 
-			const registration = RooditModels.RE.CompanyRegistration.create(
-				this.formSignup?.value
-			);
+			const registration = {}
 
 			this.dataService.add('/re/company-registration', registration).then(
 				(tokenData) => {

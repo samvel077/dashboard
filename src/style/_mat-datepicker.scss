@@ -112,7 +112,7 @@
 
       .in-range {
          background: rgba(136, 211, 252, 0.3);
-         border-bottom: 3px solid $colorAccentWhite;
+         // border-bottom: 3px solid $colorAccentWhite;
       }
 
       .in-range:first-child {
@@ -127,7 +127,7 @@
       .active:hover {
          background-color: $colorPrimaryLightBlue;
          color: $colorAccentWhite !important;
-         border-radius: 2em !important ;
+         // border-radius: 2em !important ;
          border-bottom: none;
       }
 
