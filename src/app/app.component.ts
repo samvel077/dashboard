@@ -14,7 +14,6 @@ export class AppComponent {
 
 	@HostListener('window:keydown', ['$event'])
 	async onKeyDown(e: KeyboardEvent): Promise<void> {
-		// console.log(e);
 		if (e.key === 'x') {
 			await this.authService.logout();
 			this.router.navigateByUrl('/login', {
